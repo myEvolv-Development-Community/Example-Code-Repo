@@ -8,6 +8,8 @@
     * Proprietary technology
 3. Constructive feedback is needed, but play nice!
 4. Use comments in contributed code and follow the style guidelines
+     * [Example: Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html#formatting)
+     * [Example: GitLab SQL Style Guide](https://about.gitlab.com/handbook/business-technology/data-team/platform/sql-style-guide/)
 
 ## This repository is private
 Only registered contributers can see it.
