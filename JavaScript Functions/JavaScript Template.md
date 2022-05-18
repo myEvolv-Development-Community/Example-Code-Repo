@@ -5,6 +5,13 @@
 var fieldList = ['field1', 'field2', 'field3'];
 fieldList.map(getFormElement).forEach(alert)
 ```
+### Function Arguments
+|Argument       |Definition |Data Type|
+|---            |---        |---      |
+|first argument |The meaning of this input to the function|The type of data expected to go into the argument.|
+|second argument|Tell what this argument should represent.|Default values should be mentioned here.|
+|third argument |We should be able to clearly name each argument and define its use in a single sentence.|If an argument can take a variety of types, describe more fully in the implementation details.|
+
 
 ### Implementation Details
 1. Step 1
