@@ -83,3 +83,7 @@ function insertIntoSubform(subformCaption, updateColumn, newValue) {
 ### End-User Details
 Exact details will depend on the subform manipulated.
 One promising use case is to schedule follow-up events based on an assessment reaching a critical score.
+
+1. User enters a PHQ-9 Assessment for a client.
+2. Client reports significant depression symptoms. The form's on save code scores the assessment, identifies the need for a follow-up  event and schedules using an Events To Do subform embedded in the assessment form. 
+3. The follow-up event is scheduled to occur by the end of the next day (becomes overdue at the stroke of midnight). 
