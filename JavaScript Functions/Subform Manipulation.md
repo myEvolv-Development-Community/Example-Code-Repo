@@ -86,7 +86,9 @@ One promising use case is to schedule follow-up events based on an assessment re
 
 1. User enters a PHQ-9 Assessment for a client.
 ![An assessment being selected in the Client Service Entry Screen](/JavaScript%20Functions/assets/images/Subform%20Manipulation%201.png "An assessment being selected in the Client Service Entry Screen")
+
 2. Client reports significant depression symptoms. The form's on save code scores the assessment, identifies the need for a follow-up  event and schedules using an Events To Do subform embedded in the assessment form. 
 ![An assessment form being completed](/JavaScript%20Functions/assets/images/Subform%20Manipulation%202.png "An assessment form being completed")
+
 3. The follow-up event is scheduled to occur by the end of the next day (becomes overdue at the stroke of midnight). 
 ![The Client Service Entry Screen now showing the completed assessment and a follow-up task](/JavaScript%20Functions/assets/images/Subform%20Manipulation%203.png "The Client Service Entry Screen now showing the completed assessment and a follow-up task")
