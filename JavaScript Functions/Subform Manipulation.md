@@ -53,6 +53,15 @@ function insertIntoSubform(subformCaption, updateColumn, newValue) {
 }
 ```
 
+### Function Arguments
+|Argument       |Definition |Data Type|
+|---            |---        |---      |
+|subformCaption |The caption for the subform as displayed on the parent form.|String|
+|booleanFunction|A function to apply to each row in order to find the desired value|Function|
+|outputColumn   |The columnName of the field in the subform to return.|String|
+|updateColumn   |The columnName of the field in the subform to modify.|String|
+|newValue       |The value to put into the updateColumn field on the subform.|An atomic variable or an array|
+
 ### Implementation Details
 1. Create a subform to manipulate
     * At the moment, `updateSubform` requires a variable field called 'is_sullied' to mark the value as dirty. Future developments may remove this requirement.
@@ -61,7 +70,11 @@ function insertIntoSubform(subformCaption, updateColumn, newValue) {
 2. Add the above function definitions and calls to them into the *parent* form. Examples include the On Save event for the form or the On Change hook for a field.
 3. `insertIntoSubform` requires a call to `Form.getFormLineByCaption(subformCaption).RefreshGrid() to commit changes.`
 4. Multiple queries, insertions, and updates can be used in the same action using multiple calls to the respective functions
-5. Iteration makes inserting a whole subform row easier
+5. Boolean functions yield a true or false value, and are applied to each row of the subform.
+    * Common forms include `entry => entry?.someField === 'some constant'` or `entry => entry?.someField === entry?.someOtherField`
+    * Use '&amp;&amp;' and || to include multiple tests in a single function
+    * Recommended to use `?.` to access properties, as the first and last subform rows may have null attributes.
+7. Iteration makes inserting a whole subform row easier
     ```
        var address = {street_address_1:'148 Bonnie Meadow Rd', city:'New Rochelle', state:'New York', nyscri_mailing:true}
        Object.keys(address).forEach((field) => insertIntoSubform('Address', field, address[field])
