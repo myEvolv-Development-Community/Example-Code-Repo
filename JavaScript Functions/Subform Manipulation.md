@@ -29,13 +29,10 @@ function updateSubform(subformCaption, booleanFunction, updateColumn, newValue) 
   // Array should look like: [GUID, Caption, sc_code], e.g., ["14a7e914-e609-47a1-9435-d2ad77c96c97", "Unknown", "UN"]
   Array.isArray(newValue) ? subformcell.SetValue(...newValue) : subformcell.value = newValue;
 
-  // Find and mark the is_sullied variable on the subform
-  // Have not figured out how to mark the subform as 'dirty' in order to prompt it to change
-  subform.sfValue[row]
-       .FormLines
-       .filter(c => c.columnName == 'is_sullied')[0]
-       .GetField() // Retrieves the underlying HTML for the field
-       .click(); // Triggers the 'click' action which marks the checkbox. The checkbox needs to be visible at this point.
+  // Mark subform as dirty
+  subform.isDirty = true
+  subform.subFormHasData = true
+  DirtyFormField._defaultChangeDetector(subformcell) // Register subform as dirty to prompt myEvolv to save
 }
 
 function insertIntoSubform(subformCaption, updateColumn, newValue) {
