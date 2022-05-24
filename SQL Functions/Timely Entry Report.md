@@ -208,7 +208,8 @@ agency_program_service_link.is_case=0 And
 agency_program_service_link.is_drop_in=0 and 
 agency_program_service_link.is_staff=0 and 
 agency_program_service_link.is_outreach=0 and 
-agency_program_service_link.is_incident=0```
+agency_program_service_link.is_incident=0
+```
 
 and the user-defined `timeliness_cutoff` field is added to the form, marked visible on subform. For safety, we made this the only editable field on the form. Everything else can and should be edited in the default service setups forms.
 
