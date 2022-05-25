@@ -55,4 +55,4 @@ In Service Entry, direct assignments give access to services visible to the appr
 
 Administrative workgroups, e.g., the administrators and reports workgroups, are applied to all clients on enrollment. This query shortcuts their access by automatically including all enrollments for staff currently in that workgroup.
 
-In custom reporting, link this view to the desired data object on *both* the `program_enrollment_event_id` and the `event_definition_id` for the service. 
+In custom reporting, link this view to the desired data object on *both* the `program_enrollment_event_id` and the `event_definition_id` for the service. In the custom report parameters, set the `staff_logi_id` parameter equal to `@staff_id`.
