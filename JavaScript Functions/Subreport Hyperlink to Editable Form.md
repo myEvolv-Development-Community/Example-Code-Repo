@@ -76,6 +76,8 @@ observer.observe(document, {
 ### End-User Details
 This functionality came out of a request for a streamlined process to end-date medications, diagnoses, strengths, and needs at the end of services. We were unable to find a way to link these all together using subforms, so links to forms were necessary.
 
+Use of promises and MutationObserver were necessary because subreports signal that they are 'loaded' once the frame for the table is ready. The actual data contents arrive a little later. MutationObserver allows us to wait for the data to arrive and the table rows to populate before attempting to create hyperlinks.
+
 Once implemented, open the form containing the subreport. If it is linked to an editable form, the subreport will render in blue-green italic type. This display can be customized as needed.
 
 In a standard hyperlinked subreport, the link is in the Description Column for Link specified in Setup > User Tools > Sub Reports - User > User Sub Reports, rendered in blue, bold, underlined type.
@@ -95,8 +97,8 @@ An editable form opens. Note the form is labeled as EDIT mode and the date field
 ![An editable form launched from a subreport](/JavaScript%20Functions/assets/images/Subreport%20Editable%20Link.png "An editable form launched from a subreport")
 
 
-
-
-
 ## Credit:
 https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
+
+## To-Do 
+Currently breaks when the subreport is refreshed. Will need to identify a way to re-apply hyperlinks after the refresh button is clicked.
