@@ -74,7 +74,27 @@ observer.observe(document, {
 5. Adjust the contents of the `handleDataArray()` function as needed and paste it into the After Load box on the form containing the subreport.
 
 ### End-User Details
-Open the form containing the subreport. If it is linked to an editable form, the subreport will render in blue-green italic type. This display can be customized as needed.
+This functionality came out of a request for a streamlined process to end-date medications, diagnoses, strengths, and needs at the end of services. We were unable to find a way to link these all together using subforms, so links to forms were necessary.
+
+Once implemented, open the form containing the subreport. If it is linked to an editable form, the subreport will render in blue-green italic type. This display can be customized as needed.
+
+In a standard hyperlinked subreport, the link is in the Description Column for Link specified in Setup > User Tools > Sub Reports - User > User Sub Reports, rendered in blue, bold, underlined type.
+
+![A hyperlinked subform](/JavaScript%20Functions/assets/images/Subreport%20loaded.png "Cursor hovering over the description column for link")
+
+Clicking the linked column will bring up a read-only form corresponding to the cell clicked. Note the VIEW indicator in the top bar and the date fields are greyed out.
+
+![A view-only form link](/JavaScript%20Functions/assets/images/Subreport%20View%20Only%20Link.png "A view-only form")
+
+In the customized subreport, each full row is hyperlinked. Clicking on any other cell in a row will open the editable form.
+
+![A hyperlinked subform](/JavaScript%20Functions/assets/images/Subreport%20loaded2.png "Cursor hovering over the actual date column in the subreport")
+
+An editable form opens. Note the form is labeled as EDIT mode and the date fields are active.
+
+![An editable form launched from a subreport](/JavaScript%20Functions/assets/images/Subreport%20Editable%20Link.png "An editable form launched from a subreport")
+
+
 
 
 
