@@ -47,7 +47,7 @@ var observer = new MutationObserver(function (mutations, me) {
   var dataArray = Form.getFormLineByCaption('subreport').srValue.rawDataSource;
   if (dataArray) {
     handleDataArray(dataArray);
-    me.disconnect(); // stop observing
+    //me.disconnect(); // stop observing - removed this line to account for refreshing subreport.
     return;
   }
 });
@@ -99,6 +99,3 @@ An editable form opens. Note the form is labeled as EDIT mode and the date field
 
 ## Credit:
 https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
-
-## To-Do 
-Currently breaks when the subreport is refreshed. Will need to identify a way to re-apply hyperlinks after the refresh button is clicked.
