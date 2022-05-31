@@ -47,7 +47,7 @@ var observer = new MutationObserver(function (mutations, me) {
   var dataArray = Form.getFormLineByCaption('subreport').srValue.rawDataSource;
   if (dataArray) {
     handleDataArray(dataArray);
-    //me.disconnect(); // stop observing - removed this line to account for refreshing subreport.
+    me.disconnect(); // stop observing
     return;
   }
 });
@@ -57,6 +57,20 @@ observer.observe(document, {
   childList: true,
   subtree: true
 });
+
+// Wrap around the default `RefreshSubReport` function to re-apply hyperlinks after refresh button is used.
+Form.RefreshSubreport = (function() {
+  var cached_function = Form.RefreshSubreport;
+  return function() {
+    observer.observe(document, {
+      childList: true,
+      subtree: true
+      }
+    );
+    var result = cached_function.apply(this, arguments); // use .apply() to call it
+    return result;
+    };
+})();
 ```
 ### Function Arguments
 |Argument       |Definition |Data Type|
@@ -99,3 +113,4 @@ An editable form opens. Note the form is labeled as EDIT mode and the date field
 
 ## Credit:
 https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
+https://stackoverflow.com/questions/9134686/adding-code-to-a-javascript-function-programmatically
