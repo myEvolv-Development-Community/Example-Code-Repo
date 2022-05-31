@@ -20,3 +20,9 @@ fieldList.map(getFormElement).forEach(alert)
 
 ### End-User Details
 Here is where I explain what end users should see if everything works.
+
+## Credits:
+Acknowledge specific creators if known.
+
+### To-Do
+If there is a known issue or edge case still to work out, describe it here.
