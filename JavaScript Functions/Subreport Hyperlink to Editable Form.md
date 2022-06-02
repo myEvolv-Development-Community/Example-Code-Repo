@@ -9,21 +9,42 @@ var subreport = 'Caption for my subreport'
 function handleDataArray(dataArray) {
   var subreport = Form.getFormLineByCaption('subreport');
   dataArray.
-  forEach((row, index) => 
+  forEach((row, index) => {
+  
+    // look up event_definition_id of the event on the specific row
+    var row_event_definition_id = getDataValue( 
+      "event_log", //referenced table 
+      "event_log_id", //referenced column 
+      row.event_log_id, //value to look up 
+      "event_definition_id", //column to output 
+      null, //where condition 
+      null //order by condition. Search from lowest to highest value 
+    );
+    
+    // Based on the event definition id collected, look up the form to display
+    var row_form_code = getDataValue( 
+      "vv_event_forms_expanded", //referenced table 
+      "event_definition_id", //referenced column 
+      row_event_definition_id, //value to look up 
+      "form_code", //column to output 
+      null, //where condition 
+      null //order by condition. Search from lowest to highest value 
+    );
+    
     document.
     getElementById(`sr-table-${subreport.formLinesId}-${subreport.subReportHeaderId}`).
     querySelectorAll("[id^='row']")[index].
     addEventListener("click", 
       function () {OpenFormGeneric( 
         "eventform.asp", //aspx file to use, defaults to Form.aspx
-        "PROBLEMS_CLI", //form code 
+        row_form_code, //form code 
         row.event_log_id, //keyValue, event_log_id for events
         "EDIT", //add, edit, or view mode
         true, //allow add? boolean
         true, //allow edit? boolean
         false, //allow delete? boolean
         false, 
-        "{e64e464a-3e6e-43c7-9ab7-ba33980a7816}", // event definition id 
+        row_event_definition_id,
         parentValue, //parentValue
         serviceTrack, 
         null, 
@@ -33,24 +54,13 @@ function handleDataArray(dataArray) {
         false //does this complete a scheduled event? boolean
         );
       }
-    )
-  );
+    );
+  });
+  
   // Give modified subreport a distinct style to indicate it is interactive.
   $(`[form_line_id="${Form.getFormLineByCaption('subreport').formLinesId}"]`)[0].style.fontStyle = "oblique";
   $(`[form_line_id="${Form.getFormLineByCaption('subreport').formLinesId}"]`)[0].style.color = "#26828EFF";
 }
-
-// set up the mutation observer
-var observer = new MutationObserver(function (mutations, me) {
-  // `mutations` is an array of mutations that occurred
-  // `me` is the MutationObserver instance
-  var dataArray = Form.getFormLineByCaption('subreport').srValue.rawDataSource;
-  if (dataArray) {
-    handleDataArray(dataArray);
-    me.disconnect(); // stop observing
-    return;
-  }
-});
 
 // start observing
 observer.observe(document, {
