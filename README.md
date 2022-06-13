@@ -12,7 +12,6 @@
      * [Example: GitLab SQL Style Guide](https://about.gitlab.com/handbook/business-technology/data-team/platform/sql-style-guide/)
 
 ## This repository is private
-Only registered contributers can see it!
 
 Designated contributers can make changes to this repo.
 
