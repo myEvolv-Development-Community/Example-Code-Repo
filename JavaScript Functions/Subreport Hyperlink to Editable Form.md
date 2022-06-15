@@ -97,6 +97,7 @@ Form.RefreshSubreport = (function() {
 3. Identify the event_definition_id for the event being edited.
 4. Add the subreport to a form.
 5. Adjust the contents of the `handleDataArray()` function as needed and paste it into the After Load box on the form containing the subreport.
+6. If multiple subreports are to be hyperlinked, you will need to set up separate observers for each with distinct names, e.g., demographicsObserver, strengthsObserver, needsObserver or observer1, observer2, observer3 
 
 ### End-User Details
 This functionality came out of a request for a streamlined process to end-date medications, diagnoses, strengths, and needs at the end of services. We were unable to find a way to link these all together using subforms, so links to forms were necessary.
