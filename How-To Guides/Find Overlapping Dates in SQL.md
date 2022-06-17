@@ -8,15 +8,15 @@ Two time intervals overlap if they each **begin before the other interval ends.*
 
 For example, consider the following sets of dates. Suppose we want to know which events overlap with Event A. For example, Event A might be a program enrollment and events B through F are diagnoses on file for the client - we might want to know which diagnoses were known and active during the enrollment. 
 
-Event A is highlighted and runs from May to August. Events B, C, and D overlap event A (and vice versa). Events E anf F fall outside of Event A's range. Note, however, Events B and C *do not* overlap with each other.
+Event A is highlighted and runs from May to August. Events B, C, and D overlap event A (and vice versa). Events E and F fall outside of Event A's range. Note, however, Events B and C *do not* overlap with each other.
 
-![A set of date ranges](/How-To%20Guides/assets/images/Date%20Intervals%201.svg "A set of date ranges. The time covered by one event is highlighted, and some ranges overlap this interval.")
+![A set of date ranges](assets/images/Date%20Intervals%201.svg "A set of date ranges. The time covered by one event is highlighted, and some ranges overlap this interval.")
 
 *Figure 1.* Example date ranges. 
 
 The relevant comparisons to make are to compare Event A's `actual_date` to the other events' `end_date`s and to compare the other events' `actual_date`s to Event A's `end_date`.
 
-![A set of date ranges with reference lines for comparisons.](/How-To%20Guides/assets/images/Date%20Intervals%203.svg "A set of date ranges. Dashed lines connect Event A's actual date to other events' end dates and solid lines connect Event A's end date to other events' actual dates.")
+![A set of date ranges with reference lines for comparisons.](assets/images/Date%20Intervals%203.svg "A set of date ranges. Dashed lines connect Event A's actual date to other events' end dates and solid lines connect Event A's end date to other events' actual dates.")
 
 *Figure 2.* Connecting the start and end times.
 
@@ -50,7 +50,7 @@ The pattern above can be extended to accommodate multiple overlapping dates. For
 3. Covered by a certain benefit assignment, and
 4. Had a particular diagnosis active at the time of service.
 
-![Multiple overlapping date ranges.](/How-To%20Guides/assets/images/Date%20Intervals%202.svg "A set of date ranges. The darkest region in the center overlaps with all three ranges.")
+![Multiple overlapping date ranges.](assets/images/Date%20Intervals%202.svg "A set of date ranges. The darkest region in the center overlaps with all three ranges.")
 
 *Figure 3.* Multiple overlapping date ranges. The middle, darkest region overlaps with all three displayed ranges.
 
