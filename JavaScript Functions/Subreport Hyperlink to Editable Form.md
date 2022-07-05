@@ -3,11 +3,11 @@ Extend the subreport hyperlink functionality to open an editable version of the 
 
 ### Code to Do It:
 ```javascript
-var subreport = 'Caption for my subreport'
+var subreport_caption = 'Caption for my subreport'
 
 // callback executed when array is found
 function handleDataArray(dataArray) {
-  var subreport = Form.getFormLineByCaption('subreport');
+  var subreport = Form.getFormLineByCaption(subreport_caption);
   dataArray.
   forEach((row, index) => {
   
@@ -66,7 +66,7 @@ function handleDataArray(dataArray) {
 var observer = new MutationObserver(function (mutations, me) { 
   // `mutations` is an array of mutations that occurred 
   // `me` is the MutationObserver instance 
-  var dataArray = Form.getFormLineByCaption(subreport).srValue.rawDataSource; 
+  var dataArray = Form.getFormLineByCaption(subreport_caption).srValue.rawDataSource; 
   if (dataArray) { 
     handleDataArray(dataArray); 
     me.disconnect(); // stop observing. Otherwise, the observer will keep watching and executing handleDataArray infinitely
