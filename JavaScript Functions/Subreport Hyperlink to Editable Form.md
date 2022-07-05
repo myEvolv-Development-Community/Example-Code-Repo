@@ -62,6 +62,18 @@ function handleDataArray(dataArray) {
   $(`[form_line_id="${Form.getFormLineByCaption('subreport').formLinesId}"]`)[0].style.color = "#26828EFF";
 }
 
+// set up the mutation observer 
+var observer = new MutationObserver(function (mutations, me) { 
+  // `mutations` is an array of mutations that occurred 
+  // `me` is the MutationObserver instance 
+  var dataArray = Form.getFormLineByCaption(subreport).srValue.rawDataSource; 
+  if (dataArray) { 
+    handleDataArray(dataArray); 
+    me.disconnect(); // stop observing. Otherwise, the observer will keep watching and executing handleDataArray infinitely
+  return; 
+  } 
+}); 
+
 // start observing
 observer.observe(document, {
   childList: true,
@@ -126,3 +138,32 @@ An editable form opens. Note the form is labeled as EDIT mode and the date field
 ## Credit:
 https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
 https://stackoverflow.com/questions/9134686/adding-code-to-a-javascript-function-programmatically
+
+## To-Do
+
+*Loop through a series of subreports on load. Something like:*
+
+```js
+var subreportList = ["First Caption", "Second Caption", "Third Caption"];
+
+observerList = subreportList.map(subreport => {
+    new MutationObserver(function (mutations, me) { 
+      var dataArray = Form.getFormLineByCaption(subreport).srValue.rawDataSource; 
+      if (dataArray) { 
+        handleDataArray(dataArray); 
+        me.disconnect();
+        return; 
+      }
+    }
+  }
+)
+
+observerList.forEach(observer => {
+    observe(document, { 
+      childList: true, 
+      subtree: true 
+      }
+    ); 
+  }
+)
+```
